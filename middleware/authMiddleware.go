@@ -8,9 +8,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// 用于验证请求的token
 func Authenticate() gin.HandlerFunc {
+	// 匿名函数，接收请求的上下文
 	return func(c *gin.Context) {
+		// 获取请求头中的token
 		clientToken := c.Request.Header.Get("token")
+		// 如果token为空，则终止请求的处理
 		if clientToken == "" {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintln("no authorization header provided")})
 			c.Abort()

@@ -6,6 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+// 定义用户结构体
 type User struct {
 	ID           primitive.ObjectID `bson:"_id"`
 	FirstName    *string            `json:"firstName" validate:"required, min=2, max=100"`
