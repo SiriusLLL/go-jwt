@@ -1,15 +1,22 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/SiriusLLL/go-jwt/routes"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 // 入口文件，其中包含了主要的路由和处理函数
 func main() {
+
 	// 从env中获取端口
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 	port := os.Getenv("PORT")
 
 	if port == "" {
