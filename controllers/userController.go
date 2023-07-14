@@ -153,6 +153,7 @@ func Login() gin.HandlerFunc {
 		passwordIsValid, msg := VerifyPassword(*user.Password, *foundUser.Password)
 		if !passwordIsValid {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+			return
 		}
 
 		// 用户不存在
