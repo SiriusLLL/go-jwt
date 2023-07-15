@@ -50,7 +50,7 @@ func VerifyPassword(userPassword string, providedPasswrod string) (bool, string)
 func SignUp() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
-		// 创建上下文对象
+		// 创建上下文对象，处理超时
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 		defer cancel()
 
@@ -126,7 +126,7 @@ func SignUp() gin.HandlerFunc {
 // 用户登录
 func Login() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// 创建上下文对象
+		// 创建上下文对象，处理超时
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 		defer cancel()
 
@@ -190,7 +190,7 @@ func GetUsers() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		// 创建上下文对象
+		// 创建上下文对象，处理超时
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
 		// 从请求参数中获取每页记录数，并将其转换为整数类型

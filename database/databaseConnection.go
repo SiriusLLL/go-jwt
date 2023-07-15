@@ -28,7 +28,7 @@ func DBinstance() *mongo.Client {
 		log.Fatal(err)
 	}
 
-	// 设置连接超时
+	// 创建上下文对象，处理超时
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
